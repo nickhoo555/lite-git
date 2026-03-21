@@ -1,0 +1,28 @@
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Office temp and lock files
+~$*.doc
+~$*.docx
+~$*.xls
+~$*.xlsx
+~$*.ppt
+~$*.pptx
+*.tmp
+*.temp
+
+# Common logs and caches
+*.log
+.cache/
+tmp/
+temp/
+
+# Archive leftovers and sync conflicts
+*.swp
+*.swo
+*.bak
+*.orig

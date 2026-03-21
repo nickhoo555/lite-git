@@ -1,0 +1,23 @@
+# Default all files to Git LFS
+* filter=lfs diff=lfs merge=lfs -text
+
+# Keep common text files in native Git
+*.md -filter -diff -merge text
+*.txt -filter -diff -merge text
+*.csv -filter -diff -merge text
+*.tsv -filter -diff -merge text
+*.json -filter -diff -merge text
+*.jsonc -filter -diff -merge text
+*.yaml -filter -diff -merge text
+*.yml -filter -diff -merge text
+*.toml -filter -diff -merge text
+*.xml -filter -diff -merge text
+*.html -filter -diff -merge text
+*.css -filter -diff -merge text
+*.js -filter -diff -merge text
+*.ts -filter -diff -merge text
+*.py -filter -diff -merge text
+*.sh -filter -diff -merge text
+*.gitignore -filter -diff -merge text
+*.gitattributes -filter -diff -merge text
+*.editorconfig -filter -diff -merge text
