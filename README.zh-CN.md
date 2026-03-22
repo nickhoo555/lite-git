@@ -4,16 +4,30 @@
 
 这个仓库发布了一个名为 `lite-git` 的 agent skill，目录结构已经按 `vercel-labs/skills` 的发现规则组织，用户可以直接通过 `npx skills add` 安装。
 
+仓库地址：https://github.com/nickhoo555/lite-git
+
 ## 用 npx skills 安装
 
 ```bash
-npx skills add <owner>/lite-git --skill lite-git
+npx skills add nickhoo555/lite-git --skill lite-git
 ```
 
 也可以直接从 GitHub URL 安装：
 
 ```bash
-npx skills add https://github.com/<owner>/lite-git --skill lite-git
+npx skills add https://github.com/nickhoo555/lite-git --skill lite-git
+```
+
+全局安装并跳过交互确认：
+
+```bash
+npx skills add nickhoo555/lite-git --skill lite-git -g -y
+```
+
+仅安装到 GitHub Copilot：
+
+```bash
+npx skills add nickhoo555/lite-git --skill lite-git -a github-copilot -y
 ```
 
 ## 这个 skill 做什么

@@ -4,16 +4,30 @@
 
 This repository publishes the `lite-git` agent skill in a layout that can be discovered by `vercel-labs/skills`.
 
+Repository: https://github.com/nickhoo555/lite-git
+
 ## Install with npx skills
 
 ```bash
-npx skills add <owner>/lite-git --skill lite-git
+npx skills add nickhoo555/lite-git --skill lite-git
 ```
 
 Or install directly from a GitHub URL:
 
 ```bash
-npx skills add https://github.com/<owner>/lite-git --skill lite-git
+npx skills add https://github.com/nickhoo555/lite-git --skill lite-git
+```
+
+Install globally without prompts:
+
+```bash
+npx skills add nickhoo555/lite-git --skill lite-git -g -y
+```
+
+Install to GitHub Copilot only:
+
+```bash
+npx skills add nickhoo555/lite-git --skill lite-git -a github-copilot -y
 ```
 
 ## Repository Layout
