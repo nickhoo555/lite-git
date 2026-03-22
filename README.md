@@ -55,3 +55,91 @@ Install the local repo version:
 ```bash
 npx skills add . --skill lite-git -y
 ```
+
+## Example Human-Agent Conversations (Full Workflow)
+
+The examples below show a complete end-to-end flow: initialize a repository, save a new version, and switch to an older version safely.
+
+### Scenario 1: Initialize an office-document repository
+
+User:
+Initialize this folder. It mostly contains Word files, slides, and images.
+
+Assistant (lite-git):
+I checked the folder state. This directory is not a Git repository yet.
+
+I found:
+- Documents: QuarterlyReport.pptx, BudgetNotes.docx
+- Images: cover.png, flowchart.jpg
+- Temp file: ~$QuarterlyReport.pptx
+
+Suggested plan:
+1. Ignore office temp/lock files and OS clutter
+2. Track office and media files with Git LFS
+3. Create the initial snapshot commit
+
+I will run:
+- git init -b main
+- create .gitignore
+- create .gitattributes for LFS
+- git add + git commit
+
+Done:
+- Repository initialized
+- Temp file ignored: ~$QuarterlyReport.pptx
+- LFS rules added for docx/pptx/png/jpg
+- Initial commit created: Initial snapshot
+
+### Scenario 2: Save current version with ignore/LFS checks
+
+User:
+Save the current version.
+
+Assistant (lite-git):
+I checked your changes.
+
+Detected:
+- Modified: QuarterlyReport.pptx
+- New: CustomerCase.png
+- New: ~$QuarterlyReport.pptx (temp file)
+
+Action:
+1. Temp file is excluded (ignored)
+2. pptx/png are committed with LFS tracking
+3. Safe files are committed now
+
+Done:
+- commit: Save current draft of slides
+- Included: QuarterlyReport.pptx, CustomerCase.png
+- Excluded: ~$QuarterlyReport.pptx
+
+### Scenario 3: Switch to last week's version and keep editing
+
+User:
+Switch to last week's version. I need to continue editing from there.
+
+Assistant (lite-git):
+I checked the working tree first. No uncommitted changes found, so switch is safe.
+
+Since you want to keep editing, I will avoid detached HEAD and create a branch from the target commit.
+
+Action:
+- locate target commit from git log
+- git switch -c revise-from-last-week <commit>
+
+Done:
+- You are now on branch: revise-from-last-week
+- You can continue editing and committing safely
+- main stays unchanged
+
+## Quick Prompt Examples
+
+- /version assistant initialize this folder for office files
+- /version assistant save current version and check ignore/lfs
+- /version assistant switch to last week version and continue editing
+
+or:
+
+- /lite-git initialize this folder for office files
+- /lite-git save current version with ignore/lfs checks
+- /lite-git switch to last week version and keep editing
