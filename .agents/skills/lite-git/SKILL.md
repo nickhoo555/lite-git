@@ -102,7 +102,7 @@ Template selection rules:
 
 1. If the folder is mostly Word, Excel, PowerPoint, PDF, images, and exports, prefer the default-LFS template.
 2. If the folder mixes code, config, notes, and office files, prefer the explicit-binary LFS template.
-3. If no likely binary office or media files are present, do not add LFS rules by default.
+3. If no likely binary office or media files are present, still initialize Git LFS and use a conservative baseline (explicit-binary template) so LFS is enabled from day one.
 
 ## Workflow A: Initialize Repository
 
@@ -113,7 +113,7 @@ Use this when the folder is not yet a Git repository.
 3. Propose an initialization plan before editing files.
 4. Initialize Git with the default branch set to main unless the user specifies otherwise.
 5. Create or update .gitignore with conservative defaults suited to the folder contents, preferably starting from [templates/office.gitignore](./templates/office.gitignore).
-6. If office or media files are present, set up Git LFS and create .gitattributes rules using the most suitable built-in template.
+6. Set up Git LFS by default during initialization and create .gitattributes rules using the most suitable built-in template.
    - If Git LFS is missing, install it first with one minimal confirmation, then run `git lfs install` and continue initialization.
 7. Stage only the intended files.
 8. Create the initial commit with a simple message such as "Initial snapshot" unless the user asked for something else.
@@ -121,9 +121,10 @@ Use this when the folder is not yet a Git repository.
 
 Default initialization behavior:
 
+- Enable Git LFS by default for every new repository initialization.
 - For a document-heavy folder, default to broad LFS with a text whitelist.
 - For a mixed folder, default to explicit binary LFS patterns only.
-- If LFS is required but missing, prefer helping the user install it immediately instead of skipping LFS setup.
+- If LFS is missing, prefer helping the user install it immediately instead of skipping LFS setup.
 - Prefer creating the first commit automatically after showing the exact scope, unless the user asked for review-only help.
 
 Completion checks:
