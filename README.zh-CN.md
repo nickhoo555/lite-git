@@ -37,6 +37,7 @@ npx skills add nickhoo555/lite-git --skill lite-git -a github-copilot -y
 - 初始化一个适合办公文件的 Git 仓库
 - 提交当前版本前检查哪些文件应该忽略
 - 判断哪些文件更适合交给 Git LFS 管理
+- 初始化时如果缺少 Git LFS，会提示并帮用户安装后继续流程
 - 安全切换到旧版本、其他分支或历史快照
 
 ## 仓库结构

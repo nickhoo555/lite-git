@@ -6,6 +6,8 @@ This repository publishes the `lite-git` agent skill in a layout that can be dis
 
 Repository: https://github.com/nickhoo555/lite-git
 
+`lite-git` also handles missing Git LFS during initialization by guiding the user through installation and then continuing setup.
+
 ## Install with npx skills
 
 ```bash

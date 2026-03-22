@@ -114,6 +114,7 @@ Use this when the folder is not yet a Git repository.
 4. Initialize Git with the default branch set to main unless the user specifies otherwise.
 5. Create or update .gitignore with conservative defaults suited to the folder contents, preferably starting from [templates/office.gitignore](./templates/office.gitignore).
 6. If office or media files are present, set up Git LFS and create .gitattributes rules using the most suitable built-in template.
+   - If Git LFS is missing, install it first with one minimal confirmation, then run `git lfs install` and continue initialization.
 7. Stage only the intended files.
 8. Create the initial commit with a simple message such as "Initial snapshot" unless the user asked for something else.
 9. Report exactly what was initialized, ignored, and moved to LFS.
@@ -122,6 +123,7 @@ Default initialization behavior:
 
 - For a document-heavy folder, default to broad LFS with a text whitelist.
 - For a mixed folder, default to explicit binary LFS patterns only.
+- If LFS is required but missing, prefer helping the user install it immediately instead of skipping LFS setup.
 - Prefer creating the first commit automatically after showing the exact scope, unless the user asked for review-only help.
 
 Completion checks:
@@ -199,8 +201,14 @@ Completion checks:
 ### If Git LFS is not installed but needed
 
 - Tell the user plainly that large binary files are better stored with Git LFS.
-- If the task is repository initialization, offer to set up Git first and add LFS rules after installation if installation cannot be completed now.
-- Do not pretend LFS is active unless it has actually been initialized.
+- During repository initialization, prefer installing Git LFS immediately with one minimal confirmation, then continue the same workflow.
+- Detect platform and package manager, then use the nearest standard command:
+   - macOS (Homebrew): `brew install git-lfs && git lfs install`
+   - Windows (winget): `winget install GitHub.GitLFS && git lfs install`
+   - Windows (Chocolatey): `choco install git-lfs -y && git lfs install`
+   - Debian/Ubuntu: `sudo apt-get update && sudo apt-get install -y git-lfs && git lfs install`
+- If automatic installation is unavailable, provide exact manual commands and pause before LFS-dependent steps.
+- Do not pretend LFS is active unless `git lfs install` has completed successfully.
 
 ### If the repository is mostly documents
 
